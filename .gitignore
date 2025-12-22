@@ -1,0 +1,19 @@
+# 编译生成的二进制文件和目录
+bin/
+build/
+*.exe
+*.out
+a.out
+*.obj
+*.o
+
+# 调试相关
+*.dSYM/
+
+
+# macOS
+.DS_Store
+
+# 日志、临时文件
+*.log
+*.tmp
