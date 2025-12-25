@@ -1,6 +1,7 @@
 #include<iostream>
 #include<vector>
 #include<algorithm>
+<<<<<<< HEAD
 #include<random>
 #include<numeric>
 ////函数输出
@@ -39,20 +40,33 @@ void selectSorting(std::vector<int>& num) {
 
 }
 
+//-------------------------------------------//
+/*冒泡排序*/
+void BubbleSorting(std::vector<int>& num) {
+    size_t n = num.size();
+    for (size_t i = 0; i < n - 1; ++i) {               
+        for (size_t j = 0; j < n - i - 1; ++j) {       
+            if (num[j] < num[j + 1]) {                 
+                std::swap(num[j], num[j + 1]);
+            }
+        }
+    }
+}
 
+
+/*冒泡排序优化*/
+void BubbleSorting1(std::vector<int>& num) {
+    size_t n = num.size();
+    for (size_t i = 0; i < n - 1; ++i) {
+        bool flag = false;
+        for (size_t j = 0; j < n - i - 1; ++j) {
+            if (num[j] < num[j + 1]) {
+                std::swap(num[j], num[j + 1]);
+                flag = true;
+            }
+        }
+        if(!flag) break;
+    }
+}
 /*插入排序*/
 
-
-
-int main() {
-    // std::vector<int> num = { 2,5,88,6,9,4,33,21,9 };
-    auto num = generateShuffledSequence(10, 1); // 1~10 的随机排列
-    for (int x : num) std::cout << x << " ";
-    std::cout << "\n";
-    selectSorting(num);
-    std::cout << "选择排序后的结果：";
-    printVector(num);
-
-
-    return 0;
-}
