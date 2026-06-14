@@ -1,7 +1,6 @@
 #include<iostream>
 #include<vector>
 #include<algorithm>
-<<<<<<< HEAD
 #include<random>
 #include<numeric>
 ////函数输出
@@ -54,6 +53,52 @@ void BubbleSorting(std::vector<int>& num) {
 }
 
 
+void BubbleSorting2(std::vector<int>& num) {
+    int temp = 0;
+    for (int i = 0;i < num.size();++i) {
+        for (int j = 0;j < num.size()-i;++j) {
+            if (num[j] > num[j+1]) {
+                temp = num[j];
+                num[j] = num[j+1];
+                num[j+1] = temp;
+            }
+        }
+    }    
+}
+
+
+
+void SelectSorting(std::vector<int>& num) {
+    int temp, index;
+    for (int i = 0;i < num.size() - 1;++i) {
+        temp = num[i];
+        index = i;
+        for (int j = i;j <= num.size() - 1;++j) {
+            if (num[index] > num[j]) {
+                temp = num[j];
+                index = j;
+            }
+        }
+        num[index] = num[i];
+        num[i] = temp;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*冒泡排序优化*/
 void BubbleSorting1(std::vector<int>& num) {
     size_t n = num.size();
@@ -69,4 +114,33 @@ void BubbleSorting1(std::vector<int>& num) {
     }
 }
 /*插入排序*/
+void insertSorting(std::vector<int>& num) {
+    for (size_t i = 1;i < num.size();++i) {
+        int current = num[i];
+        int j = i - 1;
+        while (j >= 0 && num[j] > current) {
+            num[j + 1] = num[j];
+            j--;
+        }
+        num[j + 1] = current;
+    }
+}
 
+/*快速排序*/
+
+
+int main() {
+    std::vector<int> num=generateShuffledSequence(50, 1);
+    for (auto& ele : num) {
+        std::cout << ele << ",";
+    }
+
+    // insertSorting(num);
+    SelectSorting(num);
+    std::cout << std::endl;
+    std::cout << "插入排序：";
+    for (auto& ele : num) {
+        std::cout << ele << ",";
+    }
+
+}
